@@ -1,7 +1,5 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-
 
 
 export default defineConfig({

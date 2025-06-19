@@ -1,25 +1,27 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-white leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Daftar Transaksi
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div
-                class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 text-gray-900 dark:text-gray-100">
+            <div class="bg-white rounded-lg shadow-lg p-6 text-gray-800 border border-gray-200">
 
-                <a href="{{ route('transaksi.create') }}"
-                    class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded mb-4 transition duration-200">
-                    Tambah Transaksi
-                </a>
+                <div class="flex justify-end mb-4">
+                    <a href="{{ route('transaksi.create') }}"
+                        class="inline-block bg-green-600 hover:bg-green-800 text-white font-semibold px-4 py-2 rounded transition duration-200">
+                        <i class="fas fa-plus mr-1"></i> Tambah Transaksi
+                    </a>
+                </div>
 
-                <div class="overflow-x-auto">
-                    <table
-                        class="w-full text-sm text-left text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 rounded-lg">
-                        <thead class="text-xs uppercase bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200">
+
+                <div class="overflow-x-auto rounded-lg border border-gray-200">
+                    <table class="w-full text-sm text-center text-gray-700">
+                        <thead class="text-xs uppercase bg-blue-600 text-white">
                             <tr>
+                                <th scope="col" class="px-6 py-3">No</th>
                                 <th scope="col" class="px-6 py-3">Kategori</th>
                                 <th scope="col" class="px-6 py-3">Jenis</th>
                                 <th scope="col" class="px-6 py-3">Jumlah</th>
@@ -29,19 +31,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($transaksis as $t)
-                                <tr
-                                    class="border-t border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
-                                    <td class="px-6 py-4">{{ $t->kategori }}</td>
+                            @foreach ($transaksis as $index => $t)
+                                <tr class="hover:bg-gray-50 even:bg-gray-50 border-b border-gray-200 transition">
+                                    <td class="px-6 py-4">{{ $index + 1 }}.</td>
+                                    <td class="px-6 py-4">{{ ucfirst($t->kategori) }}</td>
                                     <td class="px-6 py-4">
-                                        @if ($t->jenis === 'pemasukan')
+                                        @if ($t->jenis === 'Pemasukan')
                                             <span
-                                                class="bg-green-200 text-green-800 text-xs font-semibold px-2 py-1 rounded-full">
+                                                class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">
                                                 {{ $t->jenis }}
                                             </span>
                                         @else
                                             <span
-                                                class="bg-red-200 text-red-800 text-xs font-semibold px-2 py-1 rounded-full">
+                                                class="bg-red-100 text-red-800 text-xs font-semibold px-3 py-1 rounded-full">
                                                 {{ $t->jenis }}
                                             </span>
                                         @endif
@@ -52,7 +54,7 @@
                                     <td class="px-6 py-4 space-x-2">
                                         <a href="{{ route('transaksi.edit', $t->id) }}"
                                             class="inline-block bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-3 py-1 rounded">
-                                            Edit
+                                            <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
                                         <form action="{{ route('transaksi.destroy', $t->id) }}" method="POST"
                                             class="inline">
@@ -60,7 +62,7 @@
                                             @method('DELETE')
                                             <button onclick="return confirm('Yakin ingin hapus?')"
                                                 class="inline-block bg-red-500 hover:bg-red-600 text-white font-semibold px-3 py-1 rounded">
-                                                Hapus
+                                                <i class="fa-solid fa-trash"></i>
                                             </button>
                                         </form>
                                     </td>
@@ -69,7 +71,6 @@
                         </tbody>
                     </table>
                 </div>
-
 
             </div>
         </div>

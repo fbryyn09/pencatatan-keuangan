@@ -35,30 +35,30 @@
     </style>
 </head>
 
-<body class="bg-gradient-to-br from-[#0f172a] to-[#1f2a3d] text-white">
+<body class="bg-white text-gray-800">
 
     <!-- Navbar -->
-    <header class="sticky top-0 z-50 bg-[#0f172a]/80 backdrop-blur border-b border-white/10">
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-gray-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex items-center space-x-2">
-                    <i class="fas fa-coins text-green-400 text-2xl"></i>
-                    <a href="#" class="text-2xl font-bold text-green-400 tracking-wide">KeuanganKu</a>
+                    <i class="fas fa-coins text-green-500 text-2xl"></i>
+                    <a href="#" class="text-2xl font-bold text-green-500 tracking-wide">KeuanganKu</a>
                 </div>
 
                 <!-- Desktop Nav -->
-                <nav class="hidden md:flex space-x-6 font-medium text-white/80">
-                    <a href="#" class="hover:text-green-400 transition">Beranda</a>
-                    <a href="#fitur" class="hover:text-green-400 transition">Fitur</a>
-                    <a href="#cara-kerja" class="hover:text-green-400 transition">Cara Kerja</a>
-                    <a href="#tentang" class="hover:text-green-400 transition">Tentang</a>
+                <nav class="hidden md:flex space-x-6 font-medium text-gray-700">
+                    <a href="#" class="hover:text-green-500 transition">Beranda</a>
+                    <a href="#fitur" class="hover:text-green-500 transition">Fitur</a>
+                    <a href="#cara-kerja" class="hover:text-green-500 transition">Cara Kerja</a>
+                    <a href="#tentang" class="hover:text-green-500 transition">Tentang</a>
                 </nav>
 
                 <!-- Login & Sign In -->
                 <div class="hidden md:flex space-x-4">
                     <a href="{{ route('login') }}"
-                        class="px-4 py-2 text-sm font-semibold text-white hover:text-green-400 transition">
+                        class="px-4 py-2 text-sm font-semibold text-gray-700 hover:text-green-500 transition">
                         <i class="fas fa-sign-in-alt mr-1"></i> Login
                     </a>
                     <a href="{{ route('register') }}"
@@ -69,7 +69,7 @@
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
@@ -78,28 +78,28 @@
 
         <!-- Mobile Nav -->
         <div id="mobile-menu"
-            class="hidden md:hidden px-4 pb-4 pt-2 bg-black/90 backdrop-blur border-t border-white/10">
-            <a href="#" class="block py-2 text-white hover:text-green-400 font-medium">Beranda</a>
-            <a href="#fitur" class="block py-2 text-white hover:text-green-400 font-medium">Fitur</a>
-            <a href="#cara-kerja" class="block py-2 text-white hover:text-green-400 font-medium">Cara Kerja</a>
-            <a href="#tentang" class="block py-2 text-white hover:text-green-400 font-medium">Tentang</a>
+            class="hidden md:hidden px-4 pb-4 pt-2 bg-white/95 backdrop-blur border-t border-gray-200">
+            <a href="#" class="block py-2 text-gray-700 hover:text-green-500 font-medium">Beranda</a>
+            <a href="#fitur" class="block py-2 text-gray-700 hover:text-green-500 font-medium">Fitur</a>
+            <a href="#cara-kerja" class="block py-2 text-gray-700 hover:text-green-500 font-medium">Cara Kerja</a>
+            <a href="#tentang" class="block py-2 text-gray-700 hover:text-green-500 font-medium">Tentang</a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="min-h-screen flex items-center relative overflow-hidden">
+    <section class="min-h-screen flex items-center bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
         <!-- Dekorasi Lingkaran -->
-        <div class="absolute -top-10 -left-10 w-64 h-64 bg-green-500/20 rounded-full blur-3xl animate-pulse"></div>
-        <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-green-400/20 rounded-full blur-2xl animate-ping"></div>
+        <div class="absolute -top-10 -left-10 w-64 h-64 bg-green-100 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-green-200 rounded-full blur-2xl animate-ping"></div>
 
         <div class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 items-center gap-12 relative z-10">
             <!-- Text -->
             <div class="animate-fade-in-up">
-                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight text-gray-800">
                     Selamat Datang di <br />
-                    <span class="text-green-400">Pencatatan Keuangan</span>
+                    <span class="text-green-500">Pencatatan Keuangan</span>
                 </h1>
-                <p class="mt-6 text-lg text-white/80">
+                <p class="mt-6 text-lg text-gray-600">
                     Aplikasi sederhana dan aman untuk mencatat pemasukan serta pengeluaran harianmu secara efisien dan
                     modern.
                 </p>
@@ -113,7 +113,8 @@
 
             <!-- Ilustrasi -->
             <div class="flex justify-center animate-fade-in">
-                <img src="{{ asset('images/keuangan.png') }}" alt="Ilustrasi Keuangan" class="w-72 md:w-[400px]" />
+                <img src="{{ asset('images/keuangan.png') }}" alt="Ilustrasi Keuangan"
+                    class="w-72 md:w-[400px]" />
             </div>
         </div>
     </section>

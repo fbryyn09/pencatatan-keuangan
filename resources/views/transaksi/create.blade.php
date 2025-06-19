@@ -1,49 +1,101 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-white leading-tight">
-            Tambah Transaksi
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
+    <div class="py-16 bg-gray-100 min-h-screen">
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 text-gray-900 dark:text-gray-100">
+            <div class="bg-white overflow-hidden shadow-md sm:rounded-lg p-8 text-gray-800">
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    Tambah Transaksi
+                </h2>
 
-                <form action="{{ route('transaksi.store') }}" method="POST">
+                <form action="{{ route('transaksi.store') }}" method="POST" class="space-y-6">
                     @csrf
 
-                    <div class="mb-4">
-                        <label for="kategori" class="block text-sm font-medium">Kategori</label>
-                        <input type="text" name="kategori" class="w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-black" required>
+                    <!-- Kategori -->
+                    <div>
+                        <label for="kategori" class="block text-sm font-semibold mb-1">
+                            <i class="fa-solid fa-folder-open mr-1 text-blue-500"></i> Kategori
+                        </label>
+                        <input type="text" name="kategori"
+                            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-300 focus:outline-none"
+                            required>
                     </div>
 
-                    <div class="mb-4">
-                        <label for="jenis" class="block text-sm font-medium">Jenis</label>
-                        <select name="jenis" class="w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-black" required>
+                    <!-- Jenis -->
+                    <div>
+                        <label for="jenis" class="block text-sm font-semibold mb-1">
+                            <i class="fa-solid fa-list-ul mr-1 text-blue-500"></i> Jenis
+                        </label>
+                        <select name="jenis"
+                            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-300 focus:outline-none"
+                            required>
                             <option value="Pemasukan">Pemasukan</option>
                             <option value="Pengeluaran">Pengeluaran</option>
                         </select>
                     </div>
 
-                    <div class="mb-4">
-                        <label for="jumlah" class="block text-sm font-medium">Jumlah</label>
-                        <input type="number" name="jumlah" class="w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-black" required>
+                    <!-- Jumlah -->
+                    <div>
+                        <label for="jumlah" class="block text-sm font-semibold mb-1">
+                            <i class="fa-solid fa-money-bill-wave mr-1 text-blue-500"></i> Jumlah
+                        </label>
+                        <input type="number" id="jumlah" name="jumlah"
+                            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-300 focus:outline-none"
+                            required>
+                        <p id="jumlah-terformat" class="text-sm text-gray-500 mt-1">Rp 0</p>
                     </div>
 
-                    <div class="mb-4">
-                        <label for="tanggal" class="block text-sm font-medium">Tanggal</label>
-                        <input type="date" name="tanggal" class="w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-black" required>
+
+                    <!-- Tanggal -->
+                    <div>
+                        <label for="tanggal" class="block text-sm font-semibold mb-1">
+                            <i class="fa-solid fa-calendar-days mr-1 text-blue-500"></i> Tanggal
+                        </label>
+                        <input type="date" name="tanggal"
+                            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-300 focus:outline-none"
+                            required>
                     </div>
 
-                    <div class="mb-4">
-                        <label for="keterangan" class="block text-sm font-medium">Keterangan</label>
-                        <textarea name="keterangan" class="w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-black"></textarea>
+                    <!-- Keterangan -->
+                    <div>
+                        <label for="keterangan" class="block text-sm font-semibold mb-1">
+                            <i class="fa-solid fa-pencil-alt mr-1 text-blue-500"></i> Keterangan
+                        </label>
+                        <textarea name="keterangan" rows="3"
+                            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-300 focus:outline-none"
+                            placeholder="Opsional..."></textarea>
                     </div>
 
-                    <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-800">Simpan</button>
+                    <!-- Tombol -->
+                    <div class="flex justify-end gap-3 pt-4">
+                        <a href="{{ route('transaksi.index') }}"
+                            class="inline-flex items-center bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg shadow transition">
+                            <i class="fa-solid fa-arrow-left mr-2"></i> Kembali
+                        </a>
+
+                        <button type="submit"
+                            class="inline-flex items-center bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg shadow transition">
+                            <i class="fa-solid fa-floppy-disk mr-2"></i> Simpan
+                        </button>
+                    </div>
                 </form>
 
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const inputJumlah = document.getElementById('jumlah');
+            const displayRupiah = document.getElementById('jumlah-terformat');
+
+            inputJumlah.addEventListener('input', function() {
+                let angka = parseInt(this.value.replace(/\D/g, '')) || 0;
+                displayRupiah.textContent = new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                    minimumFractionDigits: 0
+                }).format(angka);
+            });
+        });
+    </script>
+
 </x-app-layout>

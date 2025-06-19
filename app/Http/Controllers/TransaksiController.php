@@ -12,7 +12,11 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $transaksis = Transaksi::latest()->get();
+        $transaksis = Transaksi::oldest()->get()->map(function ($item) {
+            $item->jenis = ucfirst($item->jenis);
+            return $item;
+        });
+
         return view('transaksi.index', compact('transaksis'));
     }
 
@@ -34,7 +38,7 @@ class TransaksiController extends Controller
             'jenis' => 'required|in:Pemasukan,Pengeluaran',
             'jumlah' => 'required|numeric',
             'tanggal' => 'required|date',
-            'keterangan' => 'nullable|string',
+            'keterangan' => 'nullable|string'
         ]);
 
         Transaksi::create([
@@ -75,7 +79,7 @@ class TransaksiController extends Controller
     {
         $request->validate([
             'kategori' => 'required|string',
-            'jenis' => 'required|in:pemasukan,pengeluaran',
+            'jenis' => 'required|in:Pemasukan,Pengeluaran',
             'jumlah' => 'required|numeric',
             'tanggal' => 'required|date',
             'keterangan' => 'nullable|string',

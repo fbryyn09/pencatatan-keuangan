@@ -14,31 +14,34 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </head>
 
-<body class="font-sans antialiased">
-    {{-- Sidebar (Tetap di sebelah kiri) --}}
-    @include('components.sidebar')
+<body class="font-sans antialiased bg-gray-100 text-gray-800">
+    <div x-data="{ open: true }" class="flex">
 
-    {{-- Konten utama, bergeser ke kanan sejauh 16rem (64 Tailwind) --}}
-    <div class="ml-64 min-h-screen bg-gray-100 dark:bg-gray-900">
-        {{-- Page Heading --}}
-        @isset($header)
-            <header class="bg-white dark:bg-gray-800 shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-        @endisset
+        {{-- Sidebar --}}
+        @include('components.sidebar')
 
-        {{-- Page Content --}}
-        <main class="p-6">
-            {{ $slot }}
-        </main>
+        {{-- Main Content --}}
+        <div :class="open ? 'ml-64' : 'ml-16'" class="min-h-screen bg-white w-full">
+
+            {{-- Page Heading --}}
+            @isset($header)
+                <header class="bg-white shadow">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        {{ $header }}
+                    </div>
+                </header>
+            @endisset
+
+            {{-- Page Content --}}
+            <main class="p-6">
+                {{ $slot }}
+            </main>
+
+        </div>
     </div>
-
 </body>
-
-
 
 </html>
