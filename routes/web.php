@@ -24,4 +24,19 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/transaksi', TransaksiController::class);
 });
 
+// Route Halaman Fitur
+Route::get('/fitur', function () {
+    return view('fitur');
+})->name('fitur');
+
+// Route Halaman Cara Kerja
+Route::get('/cara-kerja', function () {
+    return view('cara-kerja');
+})->name('cara-kerja');
+
+// Route Halaman Tentang
+Route::get('/tentang', function () {
+    return view('tentang');
+})->name('tentang');
+
 require __DIR__.'/auth.php';

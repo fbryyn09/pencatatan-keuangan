@@ -1,130 +1,187 @@
-<!DOCTYPE html>
-<html lang="id">
+<x-guest-public-layout>
+    <x-slot name="title">
+        KeuanganKu - Catat Keuanganmu dengan Mudah
+    </x-slot>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KeuanganKu - Catat Keuanganmu dengan Mudah</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <style>
-        body {
-            font-family: 'Figtree', sans-serif;
-        }
-
-        @keyframes fade-in {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-fade-in {
-            animation: fade-in 1s ease-out forwards;
-        }
-
-        .animate-fade-in-up {
-            animation: fade-in 1.2s ease-out forwards;
-        }
-    </style>
-</head>
-
-<body class="bg-white text-gray-800">
-
-    <!-- Navbar -->
-    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-gray-200 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-coins text-green-500 text-2xl"></i>
-                    <a href="#" class="text-2xl font-bold text-green-500 tracking-wide">KeuanganKu</a>
-                </div>
-
-                <!-- Desktop Nav -->
-                <nav class="hidden md:flex space-x-6 font-medium text-gray-700">
-                    <a href="#" class="hover:text-green-500 transition">Beranda</a>
-                    <a href="#fitur" class="hover:text-green-500 transition">Fitur</a>
-                    <a href="#cara-kerja" class="hover:text-green-500 transition">Cara Kerja</a>
-                    <a href="#tentang" class="hover:text-green-500 transition">Tentang</a>
-                </nav>
-
-                <!-- Login & Sign In -->
-                <div class="hidden md:flex space-x-4">
-                    <a href="{{ route('login') }}"
-                        class="px-4 py-2 text-sm font-semibold text-gray-700 hover:text-green-500 transition">
-                        <i class="fas fa-sign-in-alt mr-1"></i> Login
-                    </a>
-                    <a href="{{ route('register') }}"
-                        class="px-4 py-2 text-sm font-semibold bg-gradient-to-r from-green-500 to-green-600 text-white rounded-md shadow hover:from-green-600 hover:to-green-700 transition">
-                        <i class="fas fa-user-plus mr-1"></i> Daftar
-                    </a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
+    <section
+        class="min-h-screen flex items-center bg-gradient-to-br from-white to-gray-50 relative overflow-hidden py-20">
+        {{-- Dekorasi Lingkaran yang lebih halus (sesuai guest-public-layout) --}}
+        <div
+            class="absolute -top-1/4 -left-1/4 w-96 h-96 bg-green-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse-slow">
+        </div>
+        <div
+            class="absolute -bottom-1/4 -right-1/4 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse-slow delay-2000">
         </div>
 
-        <!-- Mobile Nav -->
-        <div id="mobile-menu"
-            class="hidden md:hidden px-4 pb-4 pt-2 bg-white/95 backdrop-blur border-t border-gray-200">
-            <a href="#" class="block py-2 text-gray-700 hover:text-green-500 font-medium">Beranda</a>
-            <a href="#fitur" class="block py-2 text-gray-700 hover:text-green-500 font-medium">Fitur</a>
-            <a href="#cara-kerja" class="block py-2 text-gray-700 hover:text-green-500 font-medium">Cara Kerja</a>
-            <a href="#tentang" class="block py-2 text-gray-700 hover:text-green-500 font-medium">Tentang</a>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="min-h-screen flex items-center bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
-        <!-- Dekorasi Lingkaran -->
-        <div class="absolute -top-10 -left-10 w-64 h-64 bg-green-100 rounded-full blur-3xl animate-pulse"></div>
-        <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-green-200 rounded-full blur-2xl animate-ping"></div>
-
-        <div class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 items-center gap-12 relative z-10">
-            <!-- Text -->
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 items-center gap-12 relative z-10 py-16">
             <div class="animate-fade-in-up">
-                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight text-gray-800">
-                    Selamat Datang di <br />
-                    <span class="text-green-500">Pencatatan Keuangan</span>
+                <h1 class="text-4xl md:text-5xl lg:text-5xl font-extrabold leading-tight text-gray-900 mb-6">
+                    Kelola Uangmu dengan <br class="hidden md:block"> <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-600">Cerdas dan
+                        Mudah</span>
                 </h1>
-                <p class="mt-6 text-lg text-gray-600">
-                    Aplikasi sederhana dan aman untuk mencatat pemasukan serta pengeluaran harianmu secara efisien dan
-                    modern.
+                <p class="mt-6 text-xl text-gray-700 max-w-lg">
+                    KeuanganKu membantu Anda mencatat setiap pemasukan dan pengeluaran, memahami pola keuangan, dan
+                    mencapai tujuan finansial impian Anda.
                 </p>
-                <div class="mt-8">
+                <div class="mt-10 flex space-x-4">
                     <a href="{{ route('register') }}"
-                        class="inline-block px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-md shadow-lg transition-all duration-300 hover:scale-105">
-                        Mulai Sekarang
+                        class="inline-block bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        Mulai Gratis
+                    </a>
+                    <a href="{{ route('fitur') }}"
+                        class="inline-block border border-gray-300 text-gray-800 hover:bg-gray-100 font-semibold py-4 px-8 rounded-full text-lg shadow-md transition-all duration-300 transform hover:-translate-y-1">
+                        Pelajari Fitur
                     </a>
                 </div>
             </div>
 
-            <!-- Ilustrasi -->
             <div class="flex justify-center animate-fade-in">
-                <img src="{{ asset('images/keuangan.png') }}" alt="Ilustrasi Keuangan"
-                    class="w-72 md:w-[400px]" />
+                <img src="{{ asset('images/keuangan.png') }}" alt="Ilustrasi Manajemen Keuangan"
+                    class="w-full max-w-md md:max-w-xl lg:max-w-2xl" />
             </div>
         </div>
     </section>
 
-    <!-- Script Menu Mobile -->
-    <script>
-        document.getElementById('mobile-menu-button').addEventListener('click', function () {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
-    </script>
-</body>
+    <section class="bg-gray-100 py-20 md:py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 animate-fade-in-up">
+                Mudah, Cepat, dan Akurat
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-16 animate-fade-in-up" style="animation-delay: 0.2s;">
+                Fokus pada apa yang penting, KeuanganKu akan menangani sisanya.
+            </p>
 
-</html>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 animate-fade-in-up" style="animation-delay: 0.4s;">
+                <div
+                    class="bg-white rounded-2xl shadow-lg p-8 transform transition duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="text-blue-500 text-5xl mb-4">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Catat Sekejap</h3>
+                    <p class="text-gray-600">Pencatatan pemasukan dan pengeluaran semudah menyentuh layar.</p>
+                </div>
+                <div
+                    class="bg-white rounded-2xl shadow-lg p-8 transform transition duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="text-green-500 text-5xl mb-4">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Analisis Mendalam</h3>
+                    <p class="text-gray-600">Grafik interaktif yang membantu Anda memahami pola keuangan.</p>
+                </div>
+                <div
+                    class="bg-white rounded-2xl shadow-lg p-8 transform transition duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="text-purple-500 text-5xl mb-4">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Data Aman</h3>
+                    <p class="text-gray-600">Keamanan data Anda adalah prioritas utama dengan enkripsi terkini.</p>
+                </div>
+            </div>
+            <a href="{{ route('fitur') }}"
+                class="mt-12 inline-block text-blue-600 hover:text-blue-700 font-semibold text-lg animate-fade-in-up"
+                style="animation-delay: 0.6s;">
+                Lihat Semua Fitur <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <section class="py-20 md:py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="flex justify-center animate-fade-in">
+                <img src="{{ asset('images/memilih-Keuangan.jpg') }}" alt="Mengapa Memilih Kami"
+                    class="w-full md:w-3/4 max-w-md" />
+            </div>
+            <div class="animate-fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
+                    Mengapa Memilih <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-500">KeuanganKu?</span>
+                </h2>
+                <ul class="space-y-6 text-lg text-gray-700">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 text-2xl mr-3 mt-1"></i>
+                        <div>
+                            <h3 class="font-bold text-xl mb-1">Mudah Digunakan</h3>
+                            <p>Antarmuka yang ramah pengguna dirancang agar setiap orang bisa mengelola keuangan tanpa
+                                kesulitan.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-hand-holding-dollar text-green-500 text-2xl mr-3 mt-1"></i>
+                        <div>
+                            <h3 class="font-bold text-xl mb-1">Hemat Waktu & Uang</h3>
+                            <p>Pencatatan yang efisien membantu Anda menghemat waktu dan menemukan potensi penghematan
+                                uang.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-shield-alt text-green-500 text-2xl mr-3 mt-1"></i>
+                        <div>
+                            <h3 class="font-bold text-xl mb-1">Keamanan Prioritas</h3>
+                            <p>Data finansial Anda dilindungi dengan teknologi enkripsi terbaru dan teraman.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gray-100 py-20 md:py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-16 animate-fade-in-up">
+                Apa Kata Pengguna Kami
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center animate-fade-in"
+                    style="animation-delay: 0.2s;">
+                    <img src="{{ asset('images/human.jpg') }}" alt="Foto Pengguna"
+                        class="w-20 h-20 rounded-full mb-4 object-cover">
+                    <div class="flex items-center text-yellow-400 mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i> {{-- Bintang setengah --}}
+                    </div>
+                    <p class="text-gray-700 text-lg italic mb-4">"KeuanganKu benar-benar mengubah cara saya mengelola
+                        uang. Sangat mudah dan fitur grafiknya membantu saya melihat gambaran besar!"</p>
+                    <p class="font-bold text-gray-900">- Febrian Fahrezi</p>
+                    <p class="text-sm text-gray-500">Karyawan Swasta</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center animate-fade-in"
+                    style="animation-delay: 0.4s;">
+                    <img src="{{ asset('images/human.jpg') }}" alt="Foto Pengguna"
+                        class="w-20 h-20 rounded-full mb-4 object-cover">
+                    <div class="flex items-center text-yellow-400 mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i> {{-- Bintang penuh --}}
+                    </div>
+                    <p class="text-gray-700 text-lg italic mb-4">"Aplikasi ini sangat intuitif. Sekarang saya tahu
+                        persis kemana perginya setiap rupiah saya. Rekomendasi!"</p>
+                    <p class="font-bold text-gray-900">- Mariana</p>
+                    <p class="text-sm text-gray-500">Mahasiswa</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center animate-fade-in"
+                    style="animation-delay: 0.6s;">
+                    <img src="{{ asset('images/human.jpg') }}" alt="Foto Pengguna"
+                        class="w-20 h-20 rounded-full mb-4 object-cover">
+                    <div class="flex items-center text-yellow-400 mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i> {{-- Bintang kosong --}}
+                    </div>
+                    <p class="text-gray-700 text-lg italic mb-4">"Sebagai pebisnis kecil, KeuanganKu membantu saya
+                        melacak keuangan pribadi saya terpisah dari bisnis. Sangat praktis!"</p>
+                    <p class="font-bold text-gray-900">- Aryan</p>
+                    <p class="text-sm text-gray-500">Pebisnis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</x-guest-public-layout>
